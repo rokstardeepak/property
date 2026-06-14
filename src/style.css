@@ -1,0 +1,188 @@
+@import "tailwindcss";
+
+/* 
+ * PREMIUM DARK MODE & MOBILE COMPATIBLE STYLESHEET
+ * Brand: Bardhaman Property
+ * Colors: 
+ *   - Background: #121214 (Deep Charcoal Black)
+ *   - Cards/Glass: #1E2229 (Dark Slate / Charcoal)
+ *   - Primary Accent: #E53E3E (Vibrant Red)
+ *   - Secondary Accent: #0A84FF (Deep Blue)
+ *   - Text Crisp: #FFFFFF (Crisp White)
+ *   - Text Subdued: #9CA3AF (Light Gray)
+ */
+
+/* Baseline Mobile Robustness Variable & Fallback Override */
+:root {
+  color-scheme: dark;
+  --bg-color: #121214;
+  --card-bg: #1E2229;
+  --primary-accent: #E53E3E;
+  --secondary-accent: #0A84FF;
+  --text-white: #FFFFFF;
+  --text-gray: #9CA3AF;
+  --border-glass: rgba(255, 255, 255, 0.08);
+}
+
+/* Base Body Styles - Explicit HEX overrides for robust rendering across all devices (Netlify/Safari mobile) */
+html, body {
+  background-color: #121214 !important;
+  color: #FFFFFF !important;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Explicit Form Elements Webkit overrides */
+input, select, textarea, button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  background-color: #1E2229;
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 16px; /* Prevents auto-zoom on iOS */
+  transition: all 0.25s ease-in-out;
+}
+
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 10px center !important;
+  background-size: 14px !important;
+  padding-right: 28px !important;
+  cursor: pointer;
+}
+
+select option {
+  background-color: #1E2229 !important;
+  color: #FFFFFF !important;
+}
+
+select option:disabled, select option[disabled] {
+  color: rgba(255, 255, 255, 0.35) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #E53E3E !important;
+  box-shadow: 0 0 0 2px rgba(229, 62, 62, 0.2) !important;
+}
+
+/* Mobile-Proof Explicit Colors Override (Ensures backgrounds don't turn white/colorless) */
+@media screen and (max-width: 768px) {
+  body, .bg-body-mobile-fix {
+    background-color: #121214 !important;
+    background: #121214 !important;
+    color: #FFFFFF !important;
+  }
+  
+  .bg-card-mobile-fix {
+    background-color: #1E2229 !important;
+    color: #FFFFFF !important;
+  }
+  
+  .border-glass-mobile-fix {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+}
+
+/* Glassmorphism Components */
+.glass-panel {
+  background-color: rgba(30, 34, 41, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.glass-nav {
+  background-color: rgba(18, 18, 20, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.glass-button-primary {
+  background-color: #E53E3E !important;
+  color: #FFFFFF !important;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px 0 rgba(229, 62, 62, 0.3);
+  border: 1px solid #E53E3E !important;
+}
+
+.glass-button-primary:hover {
+  background-color: #C53030 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(229, 62, 62, 0.5);
+  cursor: pointer;
+}
+
+.glass-button-secondary {
+  background-color: rgba(10, 132, 255, 0.1) !important;
+  color: #0A84FF !important;
+  border: 1px solid rgba(10, 132, 255, 0.3) !important;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-button-secondary:hover {
+  background-color: rgba(10, 132, 255, 0.2) !important;
+  border-color: #0A84FF !important;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+/* Custom Utilities for Premium Visual Polish */
+.accent-gradient-text {
+  background: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glow-red {
+  box-shadow: 0 0 20px 0 rgba(229, 62, 62, 0.15);
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px 0 rgba(10, 132, 255, 0.15);
+}
+
+/* Carousel/Review Styling */
+.reviews-container {
+  scrollbar-width: none; /* Firefox */
+}
+.reviews-container::-webkit-scrollbar {
+  display: none; /* Safari & Chrome */
+}
+
+/* Sticky floating whatsapp button animation */
+@keyframes pulse-whatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.whatsapp-float {
+  background-color: #25D366 !important;
+  box-shadow: 0 4px 14px 0 rgba(37, 211, 102, 0.4);
+  animation: pulse-whatsapp 2s infinite;
+}
+
+.whatsapp-float:hover {
+  background-color: #20BA5A !important;
+  transform: scale(1.08) translateY(-2px);
+}

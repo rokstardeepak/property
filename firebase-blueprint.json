@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "property": {
+      "title": "Property",
+      "description": "Curated real estate listing showcase with pricing and video walkthrough",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The property showcase title"
+        },
+        "location": {
+          "type": "string",
+          "description": "Physical neighborhood/locality in Pimple Saudagar or Pune"
+        },
+        "bhk": {
+          "type": "string",
+          "description": "Configuration or layout code, e.g. 2 BHK / 3 BHK"
+        },
+        "price": {
+          "type": "string",
+          "description": "Representational asking price or listing details"
+        },
+        "instagramUrl": {
+          "type": "string",
+          "description": "Original walkthrough Instagram link"
+        },
+        "listingType": {
+          "type": "string",
+          "description": "Whether the property is for Rent or Sell",
+          "enum": ["Sell", "Rent"]
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Server-side or local epoch timestamp of creation"
+        }
+      },
+      "required": [
+        "title",
+        "location",
+        "bhk",
+        "price",
+        "instagramUrl"
+      ]
+    }
+  },
+  "firestore": {
+    "/properties/{propertyId}": {
+      "schema": "property",
+      "description": "High-contrast public properties listing collection"
+    }
+  }
+}

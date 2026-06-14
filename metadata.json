@@ -1,0 +1,6 @@
+{
+  "name": "Bardhaman Property",
+  "description": "Premium real estate consultant in Pimple Saudagar, Pune. Find luxury 2BHK and 3BHK flats near Kokane Chowk.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

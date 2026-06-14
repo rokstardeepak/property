@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // 1. Global safety net - Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+    
+    // 2. Properties collection rule set
+    match /properties/{propertyId} {
+      // Free public reading allows properties page visitors to browse showcases immediately
+      allow read: if true;
+      
+      // Create listing validations
+      allow create: if (
+        isValidId(propertyId) && 
+        isValidProperty(incoming())
+      );
+      
+      // Update listing validations
+      allow update: if (
+        isValidId(propertyId) && 
+        isValidProperty(incoming())
+      );
+      
+      // Deletion allowed for administrative testing on sandboxed listings
+      allow delete: if isValidId(propertyId);
+    }
+    
+    // 3. Robust Type and Structure Validation Helpers
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_-]+$'); 
+    }
+    
+    function incoming() { 
+      return request.resource.data; 
+    }
+    
+    // Strict schema blueprint verification to avoid "shadow updates" or value poisoning
+    function isValidProperty(data) {
+      return (
+        data.keys().hasAll(['title', 'location', 'bhk', 'price', 'instagramUrl', 'createdAt']) &&
+        data.keys().size() >= 6 && data.keys().size() <= 8 &&
+        data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+        data.location is string && data.location.size() > 0 && data.location.size() <= 300 &&
+        data.bhk is string && data.bhk.size() > 0 && data.bhk.size() <= 150 &&
+        data.price is string && data.price.size() > 0 && data.price.size() <= 100 &&
+        data.instagramUrl is string && data.instagramUrl.size() > 0 && data.instagramUrl.size() <= 1000 &&
+        (data.createdAt is int || data.createdAt is float || data.createdAt is timestamp) &&
+        (!data.keys().hasAny(['listingType']) || (data.listingType is string && (data.listingType == 'Sell' || data.listingType == 'Rent')))
+      );
+    }
+  }
+}
