@@ -207,7 +207,7 @@
           <a href="properties.html" class="glass-button-primary px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center bg-[#E53E3E] text-white font-extrabold sm:bg-[#E53E3E]/90" style="background-color: #E53E3E !important;">
             Explore Premium Properties
           </a>
-          <a href="contact.html" class="glass-button-secondary px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center bg-[#0A84FF]/90 text-white font-extrabold sm:bg-[#0A84FF]/15 sm:text-[#0A84FF]">
+          <a href="contact.html" class="px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center font-extrabold" style="display:block; background-color: #0A84FF !important; color: #FFFFFF !important; border: 2px solid #0A84FF; text-shadow: 0 2px 4px rgba(0,0,0,0.65); box-shadow: 0 14px 30px rgba(10,132,255,0.45), inset 0 1px 0 rgba(255,255,255,0.25); -webkit-text-fill-color: #FFFFFF;">
             Inquire Consultant
           </a>
         </div>
@@ -355,7 +355,7 @@
         <!-- Section Header -->
         <div class="mb-6">
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
+            <div class="title-container">
               <div class="inline-flex items-center gap-2 bg-[#1E2229] border border-solid border-[rgba(255,255,255,0.08)] px-3 py-1 rounded-full mb-3">
                 <span class="h-2 w-2 rounded-full bg-[#E53E3E] animate-pulse"></span>
                 <span class="text-[10px] font-bold tracking-widest text-[#9CA3AF] uppercase font-mono">Recently Added Walkthroughs</span>
@@ -391,12 +391,14 @@
       </div>
     </section>
 
+    <hr class="border-t border-gray-700 mx-auto max-w-7xl my-0" />
+
     <!-- NEW SECTIONS -->
-    <section class="py-20 bg-[#121214]">
+    <section class="pt-0 pb-20 bg-[#121214]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div class="flex flex-col lg:flex-row gap-12 w-full">
           <!-- Corporate Headquarters -->
-          <div class="lg:col-span-5 space-y-8">
+          <div class="lg:w-5/12 space-y-8">
             <div class="glass-panel p-8 rounded-2xl bg-card-mobile-fix border-glass-mobile-fix glow-red h-full">
               <h2 class="text-xl font-bold mb-6 text-white uppercase tracking-wider border-b border-[rgba(255,255,255,0.08)] pb-3">Corporate Headquarters</h2>
               <div class="space-y-6">
@@ -462,7 +464,7 @@
           </div>
 
           <!-- Digital Contact Form -->
-          <div class="lg:col-span-7">
+          <div class="lg:w-7/12">
             <form id="contact-agency-form" class="glass-panel p-8 sm:p-10 rounded-2xl bg-card-mobile-fix border-glass-mobile-fix space-y-6 glow-red" onsubmit="event.preventDefault(); const name = document.getElementById('user-name').value; const phone = document.getElementById('user-phone').value; const service = document.getElementById('user-service').selectedOptions[0].text; const msg = document.getElementById('user-message').value; const waUrl = 'https://wa.me/919793199441?text=' + encodeURIComponent('Client Enquiry\n----------------------------------\nName : ' + name + '\nMobile no: ' + phone + '\nservices needed : ' + service + '\nmessage  from client : ' + msg); window.open(waUrl, '_blank'); this.reset();">
               <h2 class="text-xl font-bold text-white tracking-tight">Request Comprehensive Call Back</h2>
               <p class="text-sm text-[#9CA3AF]">
@@ -552,7 +554,7 @@
     </section>
 
     <!-- GOOGLE REVIEWS / TESTIMONIALS SECTION -->
-    <section class="py-24 relative overflow-hidden">
+    <section class="pt-5 pb-24 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
