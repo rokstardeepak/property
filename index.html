@@ -178,10 +178,10 @@
     <section class="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden">
       <!-- Dark High-Rise Overlay Image -->
       <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-[#121214] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-[#121214] z-10"></div>
         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1400&auto=format&fit=crop" 
              alt="Luxury Apartments Pune" 
-             class="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-50" />
+             class="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-50 opacity-80" />
       </div>
 
       <!-- Hero Content -->
@@ -192,7 +192,7 @@
           <span class="text-xs font-semibold tracking-widest text-[#9CA3AF] uppercase font-mono">Premium Realtor • Pimple Saudagar, Pune</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-sans tracking-tight mb-6">
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-sans tracking-tight mb-6 drop-shadow-lg">
           <span class="accent-gradient-text text-white">Discover Your</span><br>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E53E3E] to-[#0A84FF]">Dream Home in Pune</span>
         </h1>
@@ -211,7 +211,7 @@
         </div>
 
         <!-- Trust Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-10 border-t border-[rgba(255,255,255,0.08)]">
+        <div class="bg-[#12141C]/80 p-6 rounded-2xl grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 border border-[rgba(255,255,255,0.08)]">
           <div>
             <p class="text-3xl sm:text-4xl font-extrabold text-[#E53E3E]">5.0 ★</p>
             <p class="text-[#9CA3AF] text-xs uppercase tracking-widest mt-1 font-mono">Google Rating</p>
@@ -264,6 +264,7 @@
 
         <!-- Dynamic Filter Panel -->
         <div class="glass-panel p-5 sm:p-6 rounded-2xl bg-[#1E2229]/60 border border-solid border-[rgba(255,255,255,0.06)] shadow-xl mb-10 mt-8 glow-red">
+          <h3 class="text-white font-bold text-sm mb-6 border-b border-[rgba(255,255,255,0.1)] pb-4">Filter Properties By</h3>
           <form id="home-filter-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" onsubmit="return false;">
             <!-- Lease/Deal Type (Rent vs Sale) -->
             <div>
@@ -576,9 +577,67 @@
         <!-- Column 1: Brand Info -->
         <div class="space-y-4">
           <div class="flex items-center gap-3">
-            <div class="h-8 w-8 rounded-lg bg-[#E53E3E] flex items-center justify-center">
-              <span class="text-white font-black text-sm">BP</span>
-            </div>
+            <!-- Footer Logo -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" class="h-10 w-10">
+                <defs>
+                  <linearGradient id="footer-logo-blue-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0A84FF" />
+                    <stop offset="100%" stop-color="#2563EB" />
+                  </linearGradient>
+                  <linearGradient id="footer-logo-red-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF4D4D" />
+                    <stop offset="100%" stop-color="#E53E3E" />
+                  </linearGradient>
+                  <filter id="footer-logo-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3" />
+                  </filter>
+                </defs>
+                <rect width="120" height="120" rx="24" fill="#141722" stroke="rgba(255, 255, 255, 0.08)" stroke-width="1.5" />
+                <g transform="translate(10, 10)" filter="url(#footer-logo-shadow)">
+                  <!-- Left Tower Setup -->
+                  <path d="M 28 65 L 28 32 L 38 22 L 38 65 Z" fill="url(#footer-logo-blue-grad)" />
+                  <path d="M 18 65 L 18 42 L 28 32 L 28 65 Z" fill="#0C4A6E" opacity="0.8" />
+                  <path d="M 18 42 L 28 32 L 28 34 L 18 44 Z" fill="url(#footer-logo-red-grad)" />
+                  <path d="M 28 32 L 38 22 L 38 24 L 28 34 Z" fill="url(#footer-logo-red-grad)" />
+
+                  <!-- Middle Tower Setup -->
+                  <path d="M 42 65 L 42 20 L 52 10 L 52 65 Z" fill="url(#footer-logo-blue-grad)" />
+                  <path d="M 52 65 L 52 16 L 62 26 L 62 65 Z" fill="#1E3A8A" />
+                  <path d="M 42 20 L 52 10 L 52 12 L 42 22 Z" fill="url(#footer-logo-red-grad)" />
+                  <path d="M 52 16 L 62 26 L 62 28 L 52 18 Z" fill="url(#footer-logo-red-grad)" />
+
+                  <!-- Right Tower Setup -->
+                  <path d="M 66 65 L 66 32 L 76 42 L 76 65 Z" fill="url(#footer-logo-blue-grad)" />
+                  <path d="M 76 65 L 76 28 L 84 38 L 84 65 Z" fill="#1E3A8A" />
+                  <path d="M 66 32 L 76 42 L 76 44 L 66 34 Z" fill="url(#footer-logo-red-grad)" />
+                  <path d="M 76 28 L 84 38 L 84 40 L 76 30 Z" fill="url(#footer-logo-red-grad)" />
+
+                  <!-- Overlapping Roof Ridge -->
+                  <path d="M 6 78 L 32 50 L 52 68 M 32 50 Z" stroke="url(#footer-logo-red-grad)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                  <path d="M 28 72 L 52 46 L 76 68 Z" stroke="url(#footer-logo-red-grad)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                  <path d="M 52 70 L 74 50 L 96 72 Z" stroke="url(#footer-logo-red-grad)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+                  <!-- Window grids under peaks -->
+                  <g transform="translate(26, 56)" fill="#38BDF8">
+                    <rect x="0" y="0" width="4" height="4" rx="1" />
+                    <rect x="6" y="0" width="4" height="4" rx="1" />
+                    <rect x="0" y="6" width="4" height="4" rx="1" />
+                    <rect x="6" y="6" width="4" height="4" rx="1" />
+                  </g>
+                  <g transform="translate(46, 52)" fill="#38BDF8">
+                    <rect x="0" y="0" width="4.5" height="4.5" rx="1" />
+                    <rect x="6.5" y="0" width="4.5" height="4.5" rx="1" />
+                    <rect x="0" y="6.5" width="4.5" height="4.5" rx="1" />
+                    <rect x="6.5" y="6.5" width="4.5" height="4.5" rx="1" />
+                  </g>
+                  <g transform="translate(68, 56)" fill="#38BDF8">
+                    <rect x="0" y="0" width="3.5" height="3.5" rx="1" />
+                    <rect x="5.5" y="0" width="3.5" height="3.5" rx="1" />
+                    <rect x="0" y="5.5" width="3.5" height="3.5" rx="1" />
+                    <rect x="5.5" y="5.5" width="3.5" height="3.5" rx="1" />
+                  </g>
+                </g>
+            </svg>
             <span class="text-white font-bold tracking-tight">Bardhaman Property</span>
           </div>
           <p class="text-[#9CA3AF] text-sm leading-relaxed">

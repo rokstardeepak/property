@@ -36,44 +36,7 @@ try {
 }
 
 // Default Premium Property Listings to seed if Storage is empty
-const DEFAULT_PROPERTIES = [
-  {
-    id: "def-1",
-    title: "Western Hills Luxury Mansion",
-    location: "Near Kokane Chowk, Pimple Saudagar, Pune",
-    bhk: "4 BHK Ultra-Premium Penthouse",
-    price: "₹2.25 Cr",
-    instagramUrl: "https://www.instagram.com/reel/DXlw9FljCRJ/",
-    listingType: "Sell"
-  },
-  {
-    id: "def-2",
-    title: "The Crown Residences",
-    location: "Kokane Chowk, Pimple Saudagar, Pune",
-    bhk: "3 BHK Premium Flat",
-    price: "₹45,000/Month",
-    instagramUrl: "https://www.instagram.com/reel/CyXzM63pG2M/",
-    listingType: "Rent"
-  },
-  {
-    id: "def-3",
-    title: "Green Olive Heights",
-    location: "Rover-PCMC, Pimple Saudagar Area, Pune",
-    bhk: "2 BHK Smart Premium Apartment",
-    price: "₹85 Lakhs",
-    instagramUrl: "https://www.instagram.com/reel/C2F60A3pyf9/",
-    listingType: "Sell"
-  },
-  {
-    id: "def-4",
-    title: "Grand Bay Enclave",
-    location: "Brt Road, Pimple Saudagar, Pune",
-    bhk: "3 BHK Luxury View Suite",
-    price: "₹38,000/Month",
-    instagramUrl: "https://www.instagram.com/reel/C4Vz6i_p8Zk/",
-    listingType: "Rent"
-  }
-];
+const DEFAULT_PROPERTIES = [];
 
 // Helper to convert Instagram standard/mobile reel links to Embed links
 export function getInstagramEmbedUrl(url: string): string {
@@ -98,6 +61,19 @@ export function getInstagramEmbedUrl(url: string): string {
   } catch (e) {
     return url;
   }
+}
+
+// Helper to exclude specific properties
+export function isPropertyExcluded(prop: Property): boolean {
+  // Titles to exclude
+  const excludedTitles = ["Western Hills Luxury", "The Crown Residences", "Grand Bay Enclave", "Green Olive Heights"];
+  if (excludedTitles.some(excluded => prop.title.includes(excluded))) return true;
+
+  // Specific listing to exclude
+  if (prop.bhk.includes("2 BHK") && prop.price.toLowerCase().includes("call for") && prop.location.includes("Pimple Saudagar")) {
+     return true;
+  }
+  return false;
 }
 
 // 1. Core Data Repository: Combines Firestore + LocalStorage
@@ -153,7 +129,6 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
     path
   };
   console.error('Firestore Error: ', JSON.stringify(errInfo));
-  throw new Error(JSON.stringify(errInfo));
 }
 
 // Fetch all properties
@@ -196,7 +171,7 @@ export async function fetchProperties(): Promise<Property[]> {
       
       // Auto-synchronize def-1 in Firestore if its Instagram URL is outdated or if it needs listingType
       const def1InFirestore = items.find(item => item.id === 'def-1');
-      if (def1InFirestore && (def1InFirestore.instagramUrl !== DEFAULT_PROPERTIES[0].instagramUrl || !def1InFirestore.listingType)) {
+      if (def1InFirestore && DEFAULT_PROPERTIES.length > 0 && (def1InFirestore.instagramUrl !== DEFAULT_PROPERTIES[0].instagramUrl || !def1InFirestore.listingType)) {
         def1InFirestore.instagramUrl = DEFAULT_PROPERTIES[0].instagramUrl;
         def1InFirestore.listingType = DEFAULT_PROPERTIES[0].listingType;
         
@@ -269,7 +244,7 @@ export async function fetchProperties(): Promise<Property[]> {
 
   // Ensure def-1 in local items is also synchronized to DEFAULT_PROPERTIES[0]
   const def1Local = items.find(item => item.id === 'def-1');
-  if (def1Local && def1Local.instagramUrl !== DEFAULT_PROPERTIES[0].instagramUrl) {
+  if (def1Local && DEFAULT_PROPERTIES.length > 0 && def1Local.instagramUrl !== DEFAULT_PROPERTIES[0].instagramUrl) {
     def1Local.instagramUrl = DEFAULT_PROPERTIES[0].instagramUrl;
     localStorage.setItem('cached_properties', JSON.stringify(items));
   }
@@ -393,6 +368,7 @@ export async function deleteProperty(id: string): Promise<boolean> {
     } catch (err) {
       console.error("Firestore deletion failed.", err);
       handleFirestoreError(err, OperationType.DELETE, `properties/${id}`);
+      return false;
     }
   }
 
@@ -812,6 +788,7 @@ async function renderPropertiesGrid(
     const sliderMinBudget = filters.sliderMinBudget;
     
     const filteredItems = items.filter(prop => 
+      !isPropertyExcluded(prop) &&
       matchesFilters(prop, search, bhk, loc, price, type, sliderMaxBudget, sliderIsRent, sliderMinBudget)
     );
 
@@ -858,8 +835,8 @@ async function renderPropertiesGrid(
             class="absolute top-[-56px] left-0 w-full h-[calc(100%+165px)] border-0 rounded-t-2xl" 
             scrolling="no" 
             allowtransparency="true" 
-            allow="encrypted-media"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             loading="lazy"
             referrerpolicy="no-referrer">
           </iframe>
@@ -969,6 +946,7 @@ async function renderRecentPropertiesGrid(
     const sliderMinBudget = filters.sliderMinBudget;
     
     const filteredItems = items.filter(prop => 
+      !isPropertyExcluded(prop) &&
       matchesFilters(prop, search, bhk, loc, price, type, sliderMaxBudget, sliderIsRent, sliderMinBudget)
     );
 
@@ -1012,8 +990,8 @@ async function renderRecentPropertiesGrid(
             class="absolute top-[-56px] left-0 w-full h-[calc(100%+165px)] border-0 rounded-t-2xl" 
             scrolling="no" 
             allowtransparency="true" 
-            allow="encrypted-media"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
             loading="lazy"
             referrerpolicy="no-referrer">
           </iframe>

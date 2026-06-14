@@ -103,9 +103,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .glass-nav {
-  background-color: rgba(18, 18, 20, 0.8) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
+  background-color: #121214 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
