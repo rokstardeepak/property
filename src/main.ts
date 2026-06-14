@@ -526,7 +526,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const propReset = document.getElementById('prop-filter-reset');
 
   if (propertiesGrid) {
-    const updatePropFilters = () => {
+    const updatePropFilters = (shouldScroll: boolean = false) => {
       const budgetVal = propPriceSelect ? propPriceSelect.value : "All";
       const budgetParsed = parseBudgetDropdown(budgetVal);
 
@@ -541,15 +541,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         sliderMinBudget: budgetParsed.minBudget
       };
       renderPropertiesGrid(propertiesGrid, filters);
+      if (shouldScroll) propertiesGrid.scrollIntoView({ behavior: 'smooth' });
     };
 
     triggerPropFiltersUpdate = updatePropFilters;
 
-    if (propBhk) propBhk.addEventListener('change', updatePropFilters);
-    if (propLoc) propLoc.addEventListener('change', updatePropFilters);
-    if (propType) propType.addEventListener('change', updatePropFilters);
+    if (propBhk) propBhk.addEventListener('change', () => updatePropFilters(true));
+    if (propLoc) propLoc.addEventListener('change', () => updatePropFilters(true));
+    if (propType) propType.addEventListener('change', () => updatePropFilters(true));
     if (propPriceSelect) {
-      propPriceSelect.addEventListener('change', updatePropFilters);
+      propPriceSelect.addEventListener('change', () => updatePropFilters(true));
     }
 
     if (propReset) {
@@ -560,12 +561,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (propPriceSelect) propPriceSelect.value = "All";
         if (navSearchInput) navSearchInput.value = "";
         if (mobileNavSearchInput) mobileNavSearchInput.value = "";
-        updatePropFilters();
+        updatePropFilters(true);
       });
     }
 
     // Initial load
-    updatePropFilters();
+    updatePropFilters(false);
   }
 
   // Render recent properties dynamically if we are on home page
@@ -577,7 +578,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const homeReset = document.getElementById('home-reset-inner-filters') || document.getElementById('home-filter-reset');
 
   if (recentPropertiesGrid) {
-    const updateHomeFilters = () => {
+    const updateHomeFilters = (shouldScroll: boolean = false) => {
       const budgetVal = homePriceSelect ? homePriceSelect.value : "All";
       const budgetParsed = parseBudgetDropdown(budgetVal);
 
@@ -592,15 +593,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         sliderMinBudget: budgetParsed.minBudget
       };
       renderRecentPropertiesGrid(recentPropertiesGrid, filters);
+      if (shouldScroll) recentPropertiesGrid.scrollIntoView({ behavior: 'smooth' });
     };
 
     triggerHomeFiltersUpdate = updateHomeFilters;
 
-    if (homeBhk) homeBhk.addEventListener('change', updateHomeFilters);
-    if (homeLoc) homeLoc.addEventListener('change', updateHomeFilters);
-    if (homeType) homeType.addEventListener('change', updateHomeFilters);
+    if (homeBhk) homeBhk.addEventListener('change', () => updateHomeFilters(true));
+    if (homeLoc) homeLoc.addEventListener('change', () => updateHomeFilters(true));
+    if (homeType) homeType.addEventListener('change', () => updateHomeFilters(true));
     if (homePriceSelect) {
-      homePriceSelect.addEventListener('change', updateHomeFilters);
+      homePriceSelect.addEventListener('change', () => updateHomeFilters(true));
     }
 
     const setupHomeReset = () => {
@@ -613,14 +615,14 @@ document.addEventListener('DOMContentLoaded', async () => {
           if (homePriceSelect) homePriceSelect.value = "All";
           if (navSearchInput) navSearchInput.value = "";
           if (mobileNavSearchInput) mobileNavSearchInput.value = "";
-          updateHomeFilters();
+          updateHomeFilters(true);
         });
       }
     };
     setupHomeReset();
 
     // Initial load
-    updateHomeFilters();
+    updateHomeFilters(false);
   }
 
   // Setup Admin functionality if we are on admin page
