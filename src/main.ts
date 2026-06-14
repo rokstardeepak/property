@@ -360,6 +360,7 @@ export async function updateProperty(id: string, property: Omit<Property, 'id' |
 
 // Delete a property
 export async function deleteProperty(id: string): Promise<boolean> {
+  console.log("Attempting to delete property:", id);
   // 1. Write to Firestore
   if (firebaseActive && db) {
     try {
@@ -370,10 +371,13 @@ export async function deleteProperty(id: string): Promise<boolean> {
       handleFirestoreError(err, OperationType.DELETE, `properties/${id}`);
       return false;
     }
+  } else {
+    console.log("Firebase not active, skipping Firestore deletion for", id);
   }
 
   // 2. Remove from LocalStorage cache
   const currentLocal = getLocalStorageProperties().filter(item => item.id !== id);
+  console.log("LocalStorage items after filter:", currentLocal);
   localStorage.setItem('cached_properties', JSON.stringify(currentLocal));
   
   return true;
@@ -381,6 +385,23 @@ export async function deleteProperty(id: string): Promise<boolean> {
 
 // Page Navigation highlight & Mobile Burger Menu logic
 document.addEventListener('DOMContentLoaded', async () => {
+  // Password check for admin page
+  if (window.location.pathname.endsWith('admin.html')) {
+    const loginOverlay = document.getElementById('admin-login-overlay') as HTMLElement;
+    const loginBtn = document.getElementById('admin-login-btn') as HTMLElement;
+    const passInput = document.getElementById('admin-pass-input') as HTMLInputElement;
+
+    if (loginOverlay && loginBtn && passInput) {
+      loginBtn.addEventListener('click', () => {
+        if (passInput.value === import.meta.env.VITE_ADMIN_PASSWORD) {
+          loginOverlay.classList.add('hidden');
+        } else {
+          window.location.href = "index.html";
+        }
+      });
+    }
+  }
+
   // Mobile menu toggle
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
@@ -1353,6 +1374,7 @@ async function renderAdminList(container: HTMLElement, onEditClick?: (prop: Prop
         <div class="flex items-center gap-2 mt-2 xl:mt-0 shrink-0">
           <button 
             data-id="${prop.id}" 
+            type="button"
             class="edit-property-btn px-3 sm:px-4 py-2 bg-[#0A84FF] hover:bg-[#0070E0] text-white text-xs font-bold rounded-lg transition-all duration-200 flex items-center gap-1 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
@@ -1362,6 +1384,7 @@ async function renderAdminList(container: HTMLElement, onEditClick?: (prop: Prop
           </button>
           <button 
             data-id="${prop.id}" 
+            type="button"
             class="delete-property-btn px-3 sm:px-4 py-2 bg-[#E53E3E] hover:bg-[#C53030] text-white text-xs font-bold rounded-lg transition-all duration-200 flex items-center gap-1 cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
@@ -1390,11 +1413,14 @@ async function renderAdminList(container: HTMLElement, onEditClick?: (prop: Prop
     }
 
     // Add Delete Listeners
-    container.querySelectorAll('.delete-property-btn').forEach(btn => {
+    const deleteBtns = container.querySelectorAll('.delete-property-btn');
+    console.log(`Found ${deleteBtns.length} delete buttons`);
+    deleteBtns.forEach(btn => {
       btn.addEventListener('click', async (e) => {
+        console.log("Delete button clicked!");
+        e.preventDefault();
         const id = (e.currentTarget as HTMLButtonElement).getAttribute('data-id');
         if (id) {
-          if (confirm("Are you sure you want to remove this property walkthrough from the client showcase?")) {
             const btnEl = e.currentTarget as HTMLButtonElement;
             btnEl.disabled = true;
             btnEl.innerHTML = `Deleting...`;
@@ -1405,9 +1431,8 @@ async function renderAdminList(container: HTMLElement, onEditClick?: (prop: Prop
             } else {
               btnEl.disabled = false;
               btnEl.innerHTML = `Delete`;
-              alert("Error deleting the property. Please confirm permissions.");
+              console.error("Error deleting the property. Please confirm permissions.");
             }
-          }
         }
       });
     });

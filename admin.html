@@ -20,6 +20,14 @@
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body class="bg-body-mobile-fix text-[#FFFFFF] min-h-screen flex flex-col selection:bg-[#E53E3E] selection:text-white">
+    <!-- Password Login Overlay -->
+    <div id="admin-login-overlay" class="fixed inset-0 z-[1000] bg-[#121214] flex items-center justify-center">
+      <div class="glass-panel p-8 rounded-2xl glow-red w-full max-w-sm">
+        <h2 class="text-xl font-bold text-white mb-4">Admin Access</h2>
+        <input type="password" id="admin-pass-input" class="w-full bg-[#1E2229] p-3 rounded-lg text-white mb-4 border border-[rgba(255,255,255,0.1)]" placeholder="Enter password" />
+        <button id="admin-login-btn" class="w-full bg-[#E53E3E] text-white py-3 rounded-lg font-bold hover:bg-[#C53030] transition-colors">Login</button>
+      </div>
+    </div>
     
     <!-- STICKY GLASSMORPHISM NAVBAR -->
     <header class="glass-nav fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -278,7 +286,7 @@
                 <!-- Price -->
                 <div>
                   <label class="block text-xs uppercase font-mono text-white mb-1.5" for="property-price">Pricing Detail *</label>
-                  <input id="property-price" type="text" class="w-full bg-[#1E2229]" placeholder="e.g. ₹1.25 Cr or ₹35,000/Month" required />
+                  <input id="property-price" type="text" class="w-full bg-[#1E2229]" placeholder="₹" required />
                 </div>
               </div>
 

@@ -103,6 +103,7 @@
           <nav class="hidden md:flex items-center justify-center gap-3 lg:gap-6 shrink-0">
             <a href="index.html" class="nav-link font-medium text-sm text-[#E53E3E] hover:text-[#FFFFFF] transition-colors duration-200">Home</a>
             <a href="properties.html" class="nav-link font-medium text-sm text-[#9CA3AF] hover:text-[#FFFFFF] transition-colors duration-200">Properties</a>
+            <a href="services.html" class="nav-link font-medium text-sm text-[#9CA3AF] hover:text-[#FFFFFF] transition-colors duration-200">Services</a>
             <a href="about.html" class="nav-link font-medium text-sm text-[#9CA3AF] hover:text-[#FFFFFF] transition-colors duration-200">About Us</a>
             <a href="contact.html" class="nav-link font-medium text-sm text-[#9CA3AF] hover:text-[#FFFFFF] transition-colors duration-200">Contact Us</a>
             <a href="admin.html" class="nav-link font-mono text-xs bg-[rgba(255,255,255,0.05)] hover:bg-[rgba(255,255,255,0.1)] px-3.5 py-1.5 rounded-full border border-solid border-[rgba(255,255,255,0.08)] text-[#9CA3AF]">Admin Portal</a>
@@ -164,6 +165,7 @@
           </div>
           <a href="index.html" class="text-lg font-semibold text-[#E53E3E] py-1 border-b border-[rgba(255,255,255,0.05)]">Home</a>
           <a href="properties.html" class="text-lg font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] py-1 border-b border-[rgba(255,255,255,0.05)]">Properties</a>
+          <a href="services.html" class="text-lg font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] py-1 border-b border-[rgba(255,255,255,0.05)]">Services</a>
           <a href="about.html" class="text-lg font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] py-1 border-b border-[rgba(255,255,255,0.05)]">About Us</a>
           <a href="contact.html" class="text-lg font-semibold text-[#9CA3AF] hover:text-[#FFFFFF] py-1 border-b border-[rgba(255,255,255,0.05)]">Contact Us</a>
           <a href="admin.html" class="text-sm font-mono text-[#E53E3E] hover:text-[#FFFFFF] py-2">System Admin Panel</a>
@@ -178,10 +180,10 @@
     <section class="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden">
       <!-- Dark High-Rise Overlay Image -->
       <div class="absolute inset-0 z-0">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/95 via-black/90 to-[#121214] z-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-[#121214] z-20"></div>
         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1400&auto=format&fit=crop" 
              alt="Luxury Apartments Pune" 
-             class="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-50 opacity-80" />
+             class="w-full h-full object-cover object-center scale-105 filter brightness-90 saturate-100 opacity-100 z-0" />
       </div>
 
       <!-- Hero Content -->
@@ -189,15 +191,16 @@
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 bg-[#1E2229] border border-solid border-[rgba(255,255,255,0.08)] px-4 py-2 rounded-full mb-8 shadow-2xl">
           <span class="h-2 w-2 rounded-full bg-[#E53E3E] animate-ping"></span>
-          <span class="text-xs font-semibold tracking-widest text-[#9CA3AF] uppercase font-mono">Premium Realtor • Pimple Saudagar, Pune</span>
+          <span class="text-[10px] sm:text-xs font-semibold tracking-widest text-[#9CA3AF] uppercase font-mono">Premium Realtor • Pimple Saudagar, Pune</span>
         </div>
 
-        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-sans tracking-tight mb-6 drop-shadow-lg">
-          <span class="accent-gradient-text text-white">Discover Your</span><br>
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E53E3E] to-[#0A84FF]">Dream Home in Pune</span>
+        <h1 class="text-3xl sm:text-6xl lg:text-7xl font-extrabold font-sans tracking-tight mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+          <span class="text-white">Discover Your</span><br>
+          <!-- Mobile: solid red for guaranteed visibility. sm+: gradient clip. -->
+          <span class="text-[#FF5A5A] sm:text-transparent sm:bg-clip-text sm:bg-gradient-to-r sm:from-[#E53E3E] sm:to-[#0A84FF]">Dream Home in Pune</span>
         </h1>
 
-        <p class="text-[#9CA3AF] text-lg sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+        <p class="text-white sm:text-[#E5E7EB] text-base sm:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.95)] bg-black/40 sm:bg-transparent rounded-xl px-4 py-3 sm:p-0">
           We bring you exclusive, highly-vetted high-rise apartments, spacious 2BHK/3BHK flats, and investment properties in Pune's most lucrative locations, personally curated by our owner <strong class="text-white font-semibold">Amit Jain</strong>. Guided tours via detailed video walkthroughs.
         </p>
 
@@ -205,13 +208,13 @@
           <a href="properties.html" class="glass-button-primary px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center" style="background-color: #E53E3E !important;">
             Explore Premium Properties
           </a>
-          <a href="contact.html" class="glass-button-secondary px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center">
+          <a href="contact.html" class="glass-button-secondary px-8 py-4 rounded-xl text-base w-full sm:w-auto text-center border-2 border-[#0A84FF] bg-[#0A84FF]/15 text-white font-semibold">
             Inquire Consultant
           </a>
         </div>
 
         <!-- Trust Stats -->
-        <div class="bg-[#12141C]/80 p-6 rounded-2xl grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 border border-[rgba(255,255,255,0.08)]">
+        <div class="bg-[#12141C]/80 p-6 rounded-2xl grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 mb-20 border border-[rgba(255,255,255,0.08)]">
           <div>
             <p class="text-3xl sm:text-4xl font-extrabold text-[#E53E3E]">5.0 ★</p>
             <p class="text-[#9CA3AF] text-xs uppercase tracking-widest mt-1 font-mono">Google Rating</p>
@@ -385,7 +388,124 @@
       </div>
     </section>
 
-    <!-- QUICK ABOUT & LOCAL VALUE -->
+    <!-- NEW SECTIONS -->
+    <section class="py-20 bg-[#121214]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-32">
+          <!-- Corporate Headquarters -->
+          <div class="lg:col-span-5 space-y-8">
+            <div class="glass-panel p-8 rounded-2xl bg-card-mobile-fix border-glass-mobile-fix glow-red h-full">
+              <h2 class="text-xl font-bold mb-6 text-white uppercase tracking-wider border-b border-[rgba(255,255,255,0.08)] pb-3">Corporate Headquarters</h2>
+              <div class="space-y-6">
+                <!-- Address -->
+                <div class="flex items-start gap-4">
+                  <div class="mt-1 h-8 w-8 rounded-lg bg-[rgba(229,62,62,0.1)] text-[#E53E3E] flex items-center justify-center font-bold">📍</div>
+                  <div>
+                    <h4 class="font-bold text-white">Our Address</h4>
+                    <p class="text-sm text-[#9CA3AF] mt-1 leading-relaxed">
+                      Ekdant Commercial, Brt Road,<br>
+                      Near Kokane Chowk, Pimple Saudagar,<br>
+                      Pune, Maharashtra 411027
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Call Desk -->
+                <div class="flex items-start gap-4">
+                  <a href="tel:+919793199441" class="mt-1 h-8 w-8 rounded-lg bg-[rgba(10,132,255,0.1)] text-[#0A84FF] flex items-center justify-center font-bold hover:bg-[#0A84FF] hover:text-white transition-all duration-200 hover:scale-105" aria-label="Call Phone">
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </a>
+                  <div>
+                    <h4 class="font-bold text-white">Call Desk</h4>
+                    <p class="text-sm text-[#9CA3AF] mt-1 font-mono hover:text-[#0A84FF] transition-colors">
+                      <a href="tel:+919793199441">+91 97931 99441</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- WhatsApp -->
+                <div class="flex items-start gap-4">
+                  <a href="https://wa.me/919793199441?text=Hello%20Bardhaman%20Property,%20I%20am%20inquiring%20about%20properties." target="_blank" class="mt-1 h-8 w-8 rounded-lg bg-[rgba(37,211,102,0.1)] text-[#25D366] flex items-center justify-center font-bold hover:bg-[#25D366] hover:text-white transition-all duration-200 hover:scale-105" aria-label="WhatsApp Chat">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 448 512">
+                      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L3 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+                    </svg>
+                  </a>
+                  <div>
+                    <h4 class="font-bold text-white">WhatsApp</h4>
+                    <p class="text-sm text-[#9CA3AF] mt-1 font-mono hover:text-[#25D366] transition-colors">
+                      <a href="https://wa.me/919793199441?text=Hello%20Bardhaman%20Property,%20I%20am%20inquiring%20about%20properties." target="_blank">+91 97931 99441</a>
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Instagram -->
+                <div class="flex items-start gap-4">
+                  <a href="https://www.instagram.com/official.bardhaman.property/" target="_blank" class="mt-1 h-8 w-8 rounded-lg bg-[rgba(225,48,108,0.1)] text-[#E1306C] flex items-center justify-center font-bold hover:bg-[#E1306C] hover:text-white transition-all duration-200 hover:scale-105" aria-label="Instagram">
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.173.055 1.84.249 2.27.415.572.222.98.487 1.408.915.428.428.694.836.915 1.408.166.43.36 1.097.415 2.27.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.055 1.173-.249 1.84-.415 2.27-.222.572-.487.98-.915 1.408-.428.428-.836.694-1.408.915-.43.166-1.097.36-2.27.415-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.173-.055-1.84-.249-2.27-.415-.572-.222-.98-.487-1.408-.915-.428-.428-.694-.836-.915-1.408-.166-.43-.36-1.097-.415-2.27-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.055-1.173.249-1.84.415-2.27.222-.572.487-.98.915-1.408.428-.428.836-.694 1.408-.915.43-.166 1.097-.36 2.27-.415 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.277.058-2.15.258-2.915.558-.79.303-1.458.71-2.126 1.378-.668.667-1.075 1.334-1.378 2.126-.3.765-.5 1.638-.558 2.915-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.277.258 2.15.558 2.915.303.79.71 1.458 1.378 2.126.667.668 1.334 1.075 2.126 1.378.765.3 1.638.5 2.915.558 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.277-.058 2.15-.258 2.915-.558.79-.303 1.458-.71 2.126-1.378.668-.667 1.075-1.334 1.378-2.126.3-.765.5-1.638.558-2.915.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.277-.258-2.15-.558-2.915-.303-.79-.71-1.458-1.378-2.126-.667-.668-1.334-1.075-2.126-1.378-.765-.3-1.638-.5-2.915-.558-1.28-.058-1.688-.072-4.947-.072zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c0 .795-.644 1.44-1.44 1.44-.795 0-1.44-.644-1.44-1.44s.644-1.44 1.44-1.44c.795 0 1.44.644 1.44 1.44z"/>
+                    </svg>
+                  </a>
+                  <div>
+                    <h4 class="font-bold text-white">Instagram</h4>
+                    <p class="text-sm text-[#9CA3AF] mt-1 font-mono hover:text-[#E1306C] transition-colors">
+                      <a href="https://www.instagram.com/official.bardhaman.property/" target="_blank">@official.bardhaman.property</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Digital Contact Form -->
+          <div class="lg:col-span-7">
+            <form id="contact-agency-form" class="glass-panel p-8 sm:p-10 rounded-2xl bg-card-mobile-fix border-glass-mobile-fix space-y-6 glow-red" onsubmit="event.preventDefault(); const name = document.getElementById('user-name').value; const phone = document.getElementById('user-phone').value; const service = document.getElementById('user-service').selectedOptions[0].text; const msg = document.getElementById('user-message').value; const waUrl = 'https://wa.me/919793199441?text=' + encodeURIComponent('Hello, I am ' + name + '. My phone number is ' + phone + '. I am interested in: ' + service + '. Message: ' + msg); window.open(waUrl, '_blank'); this.reset();">
+              <h2 class="text-xl font-bold text-white tracking-tight">Request Comprehensive Call Back</h2>
+              <p class="text-sm text-[#9CA3AF]">
+                Provide your criteria, and a registered RERA consultant will compile a curated list of vetted options matching your requirement.
+              </p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs uppercase font-mono text-[#9CA3AF] mb-2" for="user-name">Your Full Name *</label>
+                  <input type="text" id="user-name" class="w-full bg-[#1E2229]" placeholder="Aniket Sharma" required />
+                </div>
+                <div>
+                  <label class="block text-xs uppercase font-mono text-[#9CA3AF] mb-2" for="user-phone">Phone / WhatsApp Number *</label>
+                  <input type="tel" id="user-phone" class="w-full bg-[#1E2229]" placeholder="+91 XXXXX XXXXX" required />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-mono text-[#9CA3AF] mb-2" for="user-service">Services</label>
+                <select id="user-service" class="w-full bg-[#1E2229] border border-[rgba(255,255,255,0.1)] rounded-lg p-3 text-white">
+                    <option value="rent">Rent</option>
+                    <option value="buy">Buy</option>
+                    <option value="sale">Sale</option>
+                    <option value="property-management">Property Management</option>
+                    <option value="flat">Flat (1BHK 2BHK 3BHK 4BHK 5BHK)</option>
+                    <option value="shops">Shops</option>
+                    <option value="commercial-space">Commercial Space</option>
+                    <option value="agreement">Agreement (All/Out of India)</option>
+                    <option value="police-verification">Police Verification</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase font-mono text-[#9CA3AF] mb-2" for="user-message">Message / Special Requirements</label>
+                <textarea id="user-message" rows="4" class="w-full bg-[#1E2229] resize-none" placeholder="Looking for properties near Kokane Chowk..."></textarea>
+              </div>
+
+              <button type="submit" class="w-full glass-button-primary py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 cursor-pointer" style="background-color: #E53E3E !important;">
+                📩 Submit Inquire Application
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="pt-10 pb-24 bg-[#0E0F11] border-y border-[rgba(255,255,255,0.05)]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
